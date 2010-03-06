@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 def get_fixers():
-    from fixes.typeobject import FixTypeobjectInitializers
-    from fixes import CocciFix
-    from fixes.initmodule import FixInitModule
+    from lib2to3c.typeobject import FixTypeobjectInitializers
+    from lib2to3c import CocciFix
+    from lib2to3c.initmodule import FixInitModule
     fixes = [FixTypeobjectInitializers()]
     for filename in ['RO.cocci', 'int-to-long.cocci', 'ob_type.cocci', 
                      'repr.cocci']:

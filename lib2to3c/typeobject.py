@@ -35,7 +35,7 @@ def fixup_typeobject_initializers(content):
         else:
             return content
 
-from fixes import Fix, FixTest
+from lib2to3c import Fix, FixTest
 class FixTypeobjectInitializers(Fix):
     def transform(self, string):
         return fixup_typeobject_initializers(string)

@@ -1,4 +1,4 @@
-from fixes import CocciFix, FixTest
+from lib2to3c import CocciFix, FixTest
 class FixInitModule(CocciFix):
     def __init__(self):
         CocciFix.__init__(self, 'init-module.cocci')

@@ -21,7 +21,7 @@ class CocciFix(Fix):
         self.filename = filename
 
     def get_script_path(self):
-        return os.path.join('fixes', self.filename)
+        return os.path.join('lib2to3c', self.filename)
 
     def transform(self, string):
         # spatch seems to require the input and output to be actual files,
