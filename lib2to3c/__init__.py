@@ -31,7 +31,7 @@ class CocciFix(Fix):
         #print (src_hn, src_path)
         (dst_hn, dst_path) = tempfile.mkstemp(suffix="-%s.out.c" % self.filename)
         #print (dst_hn, dst_path)
-        os.write(src_hn, string)
+        os.write(src_hn, string.encode('utf8'))
 
         args = ['spatch', '-sp_file', self.script_path, src_path, '-o', dst_path]
         p = Popen(args, stdout=PIPE, stderr=PIPE)
