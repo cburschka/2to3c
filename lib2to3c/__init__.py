@@ -1,5 +1,6 @@
 import os
 import tempfile
+import pkg_resources
 from subprocess import Popen, PIPE
 
 class Fix(object):
@@ -19,9 +20,8 @@ class CoccinelleError(RuntimeError):
 class CocciFix(Fix):
     def __init__(self, filename):
         self.filename = filename
-
-    def get_script_path(self):
-        return os.path.join('lib2to3c', self.filename)
+        # spatch requires a real patch file, so this needs to be extracted:
+        self.script_path = pkg_resources.resource_filename(__name__, self.filename)
 
     def transform(self, string):
         # spatch seems to require the input and output to be actual files,
@@ -33,7 +33,7 @@ class CocciFix(Fix):
         #print (dst_hn, dst_path)
         os.write(src_hn, string)
 
-        args = ['spatch', '-sp_file', self.get_script_path(), src_path, '-o', dst_path]
+        args = ['spatch', '-sp_file', self.script_path, src_path, '-o', dst_path]
         p = Popen(args, stdout=PIPE, stderr=PIPE)
         (stdout, stderr) = p.communicate()
         if p.returncode != 0:
