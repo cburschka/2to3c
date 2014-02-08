@@ -24,11 +24,11 @@ def fixup_typeobject_initializers(content):
         m = re.match(pat, content, re.DOTALL)
         if m:
             if False:
-                print m.groups()
-                print m.group(2)
-                print m.group(3)
-                print m.group(4)
-                print m.span(2)
+                print(m.groups())
+                print(m.group(2))
+                print(m.group(3))
+                print(m.group(4))
+                print(m.span(2))
             content = (content[:m.start(2)] 
                        + 'PyVarObject_HEAD_INIT(%s, %s)' % (m.group(3),m.group(4))
                        + content[m.end(2):])

@@ -29,7 +29,7 @@ def fixup_file(filename, options):
                                  fromfile = filename+'.orig',
                                  tofile = filename,
                                  lineterm=''):
-            print line
+            print(line)
 
         if options.write:
             open(filename, 'w').write(fixed_content)
